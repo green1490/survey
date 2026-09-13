@@ -13,7 +13,6 @@
       packages = with pkgs; [
         opentofu
         google-cloud-sdk
-        podman
       ];
     };
   };
