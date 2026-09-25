@@ -1,8 +1,8 @@
 terraform {
   required_providers {
-    google = {
-      source = "opentofu/google"
-      version = "8.2.0"
+    incus = {
+      source = "lxc/incus"
+      version = "1.2.0"
     }
 
     kubernetes = {
@@ -10,13 +10,15 @@ terraform {
       version = "3.2.1"
     }
   }
-  backend "gcs" {
-    bucket = "survey-state"
-  }
 }
 
-provider "google" {
-  project = "survey"
+provider "incus" {
+  remote {
+    name = "windsor"
+    address = "https://images.windsorcli.dev"
+    protocol = "simplestreams"
+    public = true
+  }
 }
 
 provider "kubernetes" {
