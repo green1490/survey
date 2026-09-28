@@ -9,18 +9,22 @@ terraform {
       source = "opentofu/kubernetes"
       version = "3.2.1"
     }
+
+    talos = {
+      source = "siderolabs/talos"
+      version = "0.12.0"
+    }
   }
 }
 
 provider "incus" {
-  remote {
-    name = "windsor"
-    address = "https://images.windsorcli.dev"
-    protocol = "simplestreams"
-    public = true
-  }
+
 }
 
 provider "kubernetes" {
+
+}
+
+provider "talos" {
 
 }
