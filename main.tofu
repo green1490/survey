@@ -9,11 +9,6 @@ terraform {
       source = "opentofu/kubernetes"
       version = "3.2.1"
     }
-
-    talos = {
-      source = "siderolabs/talos"
-      version = "0.12.0"
-    }
   }
 }
 
@@ -22,9 +17,5 @@ provider "incus" {
 }
 
 provider "kubernetes" {
-
-}
-
-provider "talos" {
 
 }

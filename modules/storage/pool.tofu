@@ -1,4 +1,4 @@
 resource "incus_storage_pool" "pool" {
-  name = "default"
+  name = var.name
   driver = "dir"
 }

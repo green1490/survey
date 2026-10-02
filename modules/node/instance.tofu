@@ -1,22 +1,23 @@
 resource "incus_instance" "node" {
-  name = "talos"
+  name = var.name
   image = incus_image.image.fingerprint
 
   type = "virtual-machine"
 
   config = {
     "boot.autostart" = true
-    "limits.cpu" = 2
-    "limits.memory" = "1GiB"
+    "limits.cpu" = var.vcpu
+    "limits.memory" = var.memory
+    "cloud-init.user-data" = var.cloud_init
   }
 
   device {
-    name = incus_storage_volume.talos.name
+    name = uuid()
     type = "disk"
 
     properties = {
       path = "/"
-      pool = incus_storage_pool.pool.name
+      pool = var.storage_name
     }
   }
 
@@ -26,13 +27,7 @@ resource "incus_instance" "node" {
 
     properties = {
       nictype = "bridged"
-      parent = incus_network.network.name
-      "ipv4.address" = "10.150.19.50"
+      parent = var.network_name
     }
-  }
-
-  # to not get a null ip when applying talos config resource
-  wait_for {
-    type = "ipv4"
   }
 }
