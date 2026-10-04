@@ -9,7 +9,7 @@ module "network" {
 
 module "control" {
   source = "./modules/node"
-  memory = "1GB"
+  memory = "3GB"
   name = "control-plane"
   network_name = module.network.network_name
   storage_name = module.storage.storage_name
