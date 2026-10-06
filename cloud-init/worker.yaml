@@ -1,0 +1,29 @@
+#cloud-config
+users:
+  - name: admin
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    passwd: $6$rounds=4096$RBE3CMN/7zexlLqG$4MbYaxcWtOy6fnaqldHiAGii9O1xkXu7V2laQD/nT/OhNANLBdW2mDGpmHPXRlFfnNw2.EX.26KHnJcMOe5h40
+    lock_passwd: false
+
+packages:
+  - ufw
+  - containerd
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - gpg
+
+runcmd:
+  - [ ufw, allow, "6443" ]
+  - [ swapoff, -a ]
+
+  # Ensure CRI is running
+  - [ systemctl, start, containerd ]
+  - [ mkdir, -p, -m, "755", /etc/apt/keyrings ]
+  # Allow pod to pod communication
+  - [ sysctl, -w, net.ipv4.ip_forward=1 ]
+  - [ sh, -c, "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.37/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg" ]
+  - [ sh, -c, "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.37/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list" ]
+  - [ apt-get, update ]
+  - [ apt-get, install, -y, kubelet, kubeadm, kubectl ]
+  - [ apt-mark, hold, kubelet, kubeadm, kubectl ]
