@@ -1,6 +1,6 @@
 resource "incus_instance" "node" {
   name = var.name
-  image = incus_image.image.fingerprint
+  image = var.fingerprint
 
   type = "virtual-machine"
 

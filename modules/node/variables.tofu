@@ -29,3 +29,8 @@ variable "cloud_init" {
   type = string
   description = "Content of an cloud-init script"
 }
+
+variable "fingerprint" {
+  type = string
+  description = "Incus image's fingerprint"
+}
