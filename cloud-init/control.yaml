@@ -13,12 +13,103 @@ packages:
   - curl
   - gpg
 
+write_files:
+  - path: /etc/kubernetes/pki/ca.key
+    content: |
+      -----BEGIN PRIVATE KEY-----
+      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
+      4J6MxobtFfJy3XwVvhQevzSRk/zKXmE=
+      -----END PRIVATE KEY-----
+    defer: true
+  - path: /etc/kubernetes/pki/ca.crt
+    content: |
+      -----BEGIN CERTIFICATE-----
+      MIIFITCCAwmgAwIBAgIUVDOmKjJ7FnRUxGuqcy65IRgW5oowDQYJKoZIhvcNAQEL
+      BQAwIDEeMBwGA1UEAwwVa3ViZXJuZXRlcy1jbHVzdGVyLWNhMB4XDTI2MTAxMDE3
+      MzgyM1oXDTM2MTAwNzE3MzgyM1owIDEeMBwGA1UEAwwVa3ViZXJuZXRlcy1jbHVz
+      dGVyLWNhMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAm2/n/rkM6QV1
+      X1Bn22HRP5Vn0inwaohA7YjEiWQ3FHCeXQwiUfl5I2zOEzBQIljoHGrRQFoArXxr
+      8e1AX1ZvoGJPpWsnMe0x6dsu00a+UhleeS8pf6v50uSu+I/KJB5FYUrhyQLMNLXx
+      ZN39FykNyV9pDRYSVnqHh2vxKJRv5hgfNv1WqDnXkHHdmwYoasyNc7ImQeiQiJ9D
+      4y3mE1ptl1XXyk3reZbE275Qj7zsLA7IckPCU3oyvl9TP1Y5YH+7CxLCkHb9/ys8
+      u8zC9qyHSW8bxLCaTp81XsCrl7tGs6nmRAG8vhCgtpXS/ttJpg2cDtpG7fu+PLNz
+      4eHJsc9CO3fJZlJtPuCxv+1QV/YuVX3NelX/AIHunijf39T5hM24WcYnihhKHy2z
+      GEBkBeGFKpoJEpIxLAPDBvW91UYc08hvDwb38qJeQYXUgvnaX+f3RuEAtA54Wwuk
+      29Usy7dACUAjH+hXpp9Yuz7XyoRB3GKLOctcb3kSd0TV2HYnHqXIgFj7bK5gN65N
+      fXeGALil3WLUWZN5jSeLkhYoCXmqOeufDar8ZmXnp0FZyANJSbZW1w1kbK9EEeE1
+      vEGfFL5I7J73o0c+NceLqwd0c/+WWstQWD2tHi2gAlOP4GywZdlL5XWdDxmwgJwA
+      pOuy9QIm5+qaqc0vNfCLBdzx89QjUoECAwEAAaNTMFEwHQYDVR0OBBYEFJjdfYx3
+      F4Pf2eq20W/ZojfQryc7MB8GA1UdIwQYMBaAFJjdfYx3F4Pf2eq20W/ZojfQryc7
+      MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggIBADHVzl9abgxkGizd
+      /6dlpF2w+9wXpv0LAXFUlGlmUEfQjueAs10fzdWEoezODVw9fTOoX9U4FblNk97x
+      2k4FbW04wi0LZ5dqA09fImH59gsQYHWJniT2oQXp3jR0iIAoJh4aJAYu3c/+Vjnr
+      TFQPwRTsWkkaiLAg3yCip3Je8evwY9WxRBKTa5KrDAh25Akh7aCTrQEs0bPtmm/O
+      sPLgHwfopEfb2s63nzH+Cynt10CTRBqu48YqhtMw6+YqoySoBtJBQUekXZ3X+3pa
+      pBAdYt1JfglKE31imZmd4b+IQ2dFRcJXrBzv8gLO3OvpMK/bbreVfWEDDfcnq0fV
+      B1iMED7lHSpufYvm6zfGB74rFtCslmBcD0WGzTVOTd5+f3nomWO327wIuhd/JEWk
+      UAObqK0cRltSCXgsD6BFdv6odlNAU2ZNWqdVt1vfvCQWKXwl2ofJN08TjwOSLpei
+      SW++ZcGLMDZZcfH+ao0cyh7RI2rlKu+MYBHiYwok80IuIyoHJUh7cnZ0swu+6T0d
+      V6kAWSpNPPycR0iaS9gKvOJ0UJY/X+kTTpewnlaM1+iOZpGbdqQ/tb2HVJ/l6ln9
+      2t0PZelOMXi7ondVNSotJkNOUNutfetklseWx+m7+VaF1Kfa9rd/lf6TvXXFGv2w
+      l619wvA2bSRhSEzxxxnS2BOpD/tV
+      -----END CERTIFICATE-----
+    defer: true
+
 runcmd:
   - [ ufw, allow, "6443" ]
   - [ swapoff, -a ]
 
-  # Ensure CRI is running
-  - [ systemctl, start, containerd ]
+  # package configures an incorrect path. Have to manually fix it
+  - [ sed, -i, 's|/usr/lib/cni|/opt/cni/bin|g', /etc/containerd/config.toml ]
+  - [ systemctl, restart, containerd ]
   - [ mkdir, -p, -m, "755", /etc/apt/keyrings ]
   # Allow pod to pod communication
   - [ sysctl, -w, net.ipv4.ip_forward=1 ]
@@ -27,7 +118,7 @@ runcmd:
   - [ apt-get, update ]
   - [ apt-get, install, -y, kubelet, kubeadm, kubectl ]
   - [ apt-mark, hold, kubelet, kubeadm, kubectl ]
-  - [ kubeadm, init, --pod-network-cidr=10.244.0.0/16]
+  - [ kubeadm, init, --pod-network-cidr=192.168.0.0/16 ]
   # start cluster and configure CNI
   - [ sh, -c, "mkdir -p $HOME/.kube" ]
   - [ sh, -c, "cp -i /etc/kubernetes/admin.conf $HOME/.kube/config" ]
@@ -35,4 +126,5 @@ runcmd:
   - [ mkdir, -p, /opt/cni/bin ]
   - [ curl, -O, -L, https://github.com/containernetworking/plugins/releases/download/v1.7.1/cni-plugins-linux-amd64-v1.7.1.tgz ]
   - [ tar, -C, /opt/cni/bin, -xzf, cni-plugins-linux-amd64-v1.7.1.tgz ]
-  - [ kubectl, apply, -f, https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml ]
+  - [ kubectl, apply, -f, https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/calico.yaml ]
+  - [ kubeadm, token, create, abcdef.0123456789abcdef ]

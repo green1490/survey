@@ -14,16 +14,21 @@ packages:
   - gpg
 
 runcmd:
-  - [ ufw, allow, "6443" ]
+  - [ ufw, allow, "6443/tcp" ]
   - [ swapoff, -a ]
 
-  # Ensure CRI is running
-  - [ systemctl, start, containerd ]
+  # package configures an incorrect path. Have to manually fix it
+  - [ sed, -i, 's|/usr/lib/cni|/opt/cni/bin|g', /etc/containerd/config.toml ]
+  - [ systemctl, restart, containerd ]
   - [ mkdir, -p, -m, "755", /etc/apt/keyrings ]
   # Allow pod to pod communication
   - [ sysctl, -w, net.ipv4.ip_forward=1 ]
+  - [ mkdir, -p, /opt/cni/bin ]
+  - [ curl, -O, -L, https://github.com/containernetworking/plugins/releases/download/v1.7.1/cni-plugins-linux-amd64-v1.7.1.tgz ]
+  - [ tar, -C, /opt/cni/bin, -xzf, cni-plugins-linux-amd64-v1.7.1.tgz ]
   - [ sh, -c, "curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.37/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg" ]
   - [ sh, -c, "echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.37/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list" ]
   - [ apt-get, update ]
   - [ apt-get, install, -y, kubelet, kubeadm, kubectl ]
   - [ apt-mark, hold, kubelet, kubeadm, kubectl ]
+  - [ kubeadm, join, 172.16.1.100:6443, --token, abcdef.0123456789abcdef, --discovery-token-ca-cert-hash, sha256:8ff7885027d25d3a18b99e3b25adac32b1503c6f81269c95eab3b3603a9d98da]
