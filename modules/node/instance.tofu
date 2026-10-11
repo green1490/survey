@@ -21,13 +21,30 @@ resource "incus_instance" "node" {
     }
   }
 
-  device {
-    name = "eth0"
-    type = "nic"
+  dynamic "device" {
+    for_each = var.ipv4 != null ? [1] : []
+    content {
+      name = "eth0"
+      type = "nic"
 
-    properties = {
-      nictype = "bridged"
-      parent = var.network_name
+      properties = {
+        nictype = "bridged"
+        parent = var.network_name
+        "ipv4.address" = var.ipv4
+      }
+    }
+  }
+
+  dynamic "device" {
+    for_each = var.ipv4 == null ? [1] : []
+    content {
+      name = "eth0"
+      type = "nic"
+
+      properties = {
+        nictype = "bridged"
+        parent = var.network_name
+      }
     }
   }
 }

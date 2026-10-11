@@ -6,3 +6,7 @@ variable "ipv4_subnet" {
     condition = strcontains(var.ipv4_subnet, "/")
   }
 }
+
+variable "name" {
+  type = string
+}

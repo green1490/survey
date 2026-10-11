@@ -34,3 +34,8 @@ variable "fingerprint" {
   type = string
   description = "Incus image's fingerprint"
 }
+
+variable "ipv4" {
+  type = string
+  nullable = true
+}
