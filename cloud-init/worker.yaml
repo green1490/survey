@@ -1,9 +1,4 @@
 #cloud-config
-users:
-  - name: admin
-    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
-    passwd: $6$rounds=4096$RBE3CMN/7zexlLqG$4MbYaxcWtOy6fnaqldHiAGii9O1xkXu7V2laQD/nT/OhNANLBdW2mDGpmHPXRlFfnNw2.EX.26KHnJcMOe5h40
-    lock_passwd: false
 
 packages:
   - ufw
