@@ -13,6 +13,7 @@
       packages = with pkgs; [
         opentofu
         kubectl
+        kubernetes-helm
       ];
     };
   };

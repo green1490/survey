@@ -123,3 +123,7 @@ runcmd:
   - [ tar, -C, /opt/cni/bin, -xzf, cni-plugins-linux-amd64-v1.7.1.tgz ]
   - [ kubectl, apply, -f, https://raw.githubusercontent.com/projectcalico/calico/v3.33.0/manifests/calico.yaml ]
   - [ kubeadm, token, create, abcdef.0123456789abcdef ]
+  # mount pvc for redis and postgres when installing formbircks
+  # only good for single node testing
+  - [ kubectl, apply, -f, https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.37/deploy/local-path-storage.yaml ]
+  - [ kubectl, patch, storageclass, local-path, -p, '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}']

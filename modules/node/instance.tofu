@@ -11,6 +11,10 @@ resource "incus_instance" "node" {
     "cloud-init.user-data" = var.cloud_init
   }
 
+  wait_for {
+    type = "cloud-init"
+  }
+
   device {
     name = uuid()
     type = "disk"
