@@ -1,4 +1,4 @@
 module "image" {
   source = "./modules/image"
-  name = "debian/14/cloud"
+  name = "debian/13/cloud"
 }
