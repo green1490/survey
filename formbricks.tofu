@@ -1,8 +1,8 @@
-module "control" {
+module "formbricks" {
   source = "./modules/node"
   memory = "4GB"
-  name = "control-plane"
-  network_name = module.control_network.network_name
+  name = "formbricks"
+  network_name = module.formbricks_network.network_name
   storage_name = module.storage.storage_name
   vcpu = "4"
   cloud_init = file("cloud-init/control.yaml")
