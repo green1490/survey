@@ -35,8 +35,8 @@ runcmd:
   - |
       POSTGRES_PASSWORD=$(openssl rand -hex 32)
       cat <<EOF > .env
-      WEBAPP_URL=http://localhost:3000
-      BETTER_AUTH_URL=http://localhost:3000
+      WEBAPP_URL=http://172.16.1.100:3000
+      BETTER_AUTH_URL=http://172.16.1.100:3000
       POSTGRES_PASSWORD=$POSTGRES_PASSWORD
       POSTGRES_PASSWORD_URL_ENCODED=$POSTGRES_PASSWORD
       BETTER_AUTH_SECRET=$(openssl rand -hex 32)
