@@ -1,3 +1,5 @@
+resource "random_uuid" "disk_device" {}
+
 resource "incus_instance" "node" {
   name = var.name
   image = var.fingerprint
@@ -12,7 +14,7 @@ resource "incus_instance" "node" {
   }
 
   device {
-    name = uuid()
+    name = random_uuid.disk_device.result
     type = "disk"
 
     properties = {
