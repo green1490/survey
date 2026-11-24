@@ -1,3 +1,3 @@
-module "storage" {
+module "formbricks_storage" {
   source = "./modules/storage"
 }
